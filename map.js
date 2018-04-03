@@ -1,13 +1,22 @@
 // Voilà une esquisse de la page affichant la map et permettant de géolocaliser une personne
 // reste à trouver le moyen d'afficher: récupérer les coordonnées GPS avec la méthode leaflet 
 // voir http://leafletjs.com/reference-1.3.0.html
+// et https://www.mapbox.com/studio/styles/julienchenel/cjfdz2p2fa5g92sq0dzgxf95o/
+
 // la méthode "latlng" le permet mais je n'y arrive pas encore. Voir le code à la fin du fichier
 
 // Pour la capture de la caméra, pas de code sur cette page voir la 
 // source : https://www.html5rocks.com/en/tutorials/getusermedia/intro/ pour plus d'info
 
 
+
 // Parametrage de l'api https://www.mapbox.com/studio/styles/julienchenel/cjfdz2p2fa5g92sq0dzgxf95o/
+
+// Doc pour afficher des marqueurs dt les infos st dans une base de donnée:
+// https://openclassrooms.com/forum/sujet/affichage-de-marqueurs-sur-une-carte-dynamique
+
+// un marqueur draggable pour la version bureau
+//https://www.touraineverte.fr/google-maps-api-version-3/exemple-tutoriel-marqueurs-markers/afficher-latitude-longitude-marqueur-title-dragend-position_changed.html
 
 var map = L.map('map').fitWorld();
 
