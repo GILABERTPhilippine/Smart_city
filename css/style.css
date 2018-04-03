@@ -1,0 +1,37 @@
+#cat1 {
+    background-color: rgb(49, 49, 219);
+}
+
+#cat2 {
+    background-color: red;
+}
+
+#cat3 {
+    background-color: rebeccapurple;
+}
+
+#cat4 {
+    background-color: gray;
+}
+
+#cat5 {
+    background-color: dodgerblue;
+}
+
+#cat6 {
+    background-color: orange;
+}
+
+#cat7 {
+    background-color: green;
+}
+
+#cat8 {
+    background-color: rgb(179, 178, 178);
+}
+
+.carreCat {
+    height: 22vh;
+    width: 26vh;
+    color: white;
+}
