@@ -1,0 +1,34 @@
+/* Header */
+
+header{
+    height: 5vh;
+}
+
+/* hauteur diaporama */
+
+.carousel-inner{
+    height: 45vh;
+}
+
+/* Menu buttons */
+
+.menuButton{
+    width: 25vh;
+    height: 25vh;
+}
+
+#menu1{
+    background-color: yellow;
+}
+
+#menu2{
+    background-color: pink;
+}
+
+#menu3{
+    background-color: blue;    
+}
+
+#menu4{
+    background-color: red;    
+}
