@@ -4,7 +4,11 @@ header{
     height: 5vh;
 }
 
-/* hauteur diaporama */
+/* diaporama */
+
+#diaporama{
+    background-color: lightsteelblue;
+}
 
 .carousel-inner{
     height: 45vh;
@@ -13,6 +17,7 @@ header{
 /* Menu buttons */
 
 .menuButton{
+    padding-top: 10vh;
     width: 25vh;
     height: 25vh;
 }
