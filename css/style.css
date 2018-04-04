@@ -12,6 +12,8 @@ header{
 
 .carousel-inner{
     height: 45vh;
+    display: flex;
+    justify-content: flex-start;
 }
 
 /* Menu buttons */
