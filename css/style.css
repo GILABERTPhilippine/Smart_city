@@ -4,6 +4,10 @@ header{
     height: 5vh;
 }
 
+#logo{
+    width: 5vh;
+}
+
 /* diaporama */
 
 #diaporama{
@@ -19,13 +23,9 @@ header{
 /* Menu buttons */
 
 .menuButton{
+    color:white;
     padding-top: 7vh;
     width: 25vh;
     height: 25vh;
     background-image: linear-gradient(to left top, #170cef, #0031f1, #0046f1, #0057ef, #1265eb);
-}
-
-
-a{
-    color:white;
 }
