@@ -1,7 +1,7 @@
 /* Header */
 
 header{
-    height: 5vh;
+    height: 7vh;
 }
 
 #logo{
@@ -15,7 +15,7 @@ header{
 }
 
 .carousel-inner{
-    height: 45vh;
+    height: 43vh;
     display: flex;
     justify-content: flex-start;
 }
@@ -28,6 +28,7 @@ header{
     width: 25vh;
     height: 25vh;
     background-image: linear-gradient(to left top, #170cef, #0031f1, #0046f1, #0057ef, #1265eb);
+}
 
 /* Partie catégories */
 
