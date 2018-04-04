@@ -1,37 +1,51 @@
+/* Partie catégories */
+
 #cat1 {
-    background-color: rgb(49, 49, 219);
+    background-image: linear-gradient(to left top, #170cef, #0031f1, #0046f1, #0057ef, #1265eb);
 }
 
 #cat2 {
-    background-color: red;
+    background-image: linear-gradient(to left top, #961515, #ab1515, #c01415, #d51314, #eb1212);
 }
 
 #cat3 {
-    background-color: rebeccapurple;
+    background-image: linear-gradient(to left top, #781ade, #7d27e2, #8331e6, #883ae9, #8d43ed);
 }
 
 #cat4 {
-    background-color: gray;
+    background-image: linear-gradient(to left top, #50534f, #616560, #727771, #848a83, #969d95);
 }
 
 #cat5 {
-    background-color: dodgerblue;
+    background-image: linear-gradient(to left top, #21b8c6, #26c7d4, #2cd7e3, #32e6f1, #39f6ff);
 }
 
 #cat6 {
-    background-color: orange;
+    background-image: linear-gradient(to left top, #de9a1a, #e4a51c, #eab11f, #efbc23, #f4c827);
 }
 
 #cat7 {
-    background-color: green;
+    background-image: linear-gradient(to left top, #2f810b, #31950b, #31aa0b, #2fbf0d, #29d50f);
 }
 
 #cat8 {
-    background-color: rgb(179, 178, 178);
+    background-image: linear-gradient(to left top, #8d948b, #9ca39a, #abb2a9, #bac1b8, #c9d1c8);
 }
 
 .carreCat {
     height: 22vh;
-    width: 26vh;
+    width: 25vh;
     color: white;
+    padding-top: 30px;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+/* Fin partie categories */
+
+#filterButton {
+    margin-right: 1vh;
 }
