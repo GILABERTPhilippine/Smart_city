@@ -7,7 +7,7 @@ header{
 /* diaporama */
 
 #diaporama{
-    background-color: lightsteelblue;
+    background-image: linear-gradient(to left top, #170cef, #0031f1, #0046f1, #0057ef, #1265eb);
 }
 
 .carousel-inner{
@@ -19,27 +19,13 @@ header{
 /* Menu buttons */
 
 .menuButton{
-    padding-top: 10vh;
+    padding-top: 7vh;
     width: 25vh;
     height: 25vh;
+    background-image: linear-gradient(to left top, #170cef, #0031f1, #0046f1, #0057ef, #1265eb);
 }
 
-#menu1{
-    background-color: yellow;
-}
-
-#menu2{
-    background-color: pink;
-}
-
-#menu3{
-    background-color: blue;    
-}
-
-#menu4{
-    background-color: red;    
-}
 
 a{
-    color:black;
+    color:white;
 }
