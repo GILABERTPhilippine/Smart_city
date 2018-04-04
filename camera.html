@@ -1,15 +1,22 @@
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title></title>
+</head>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css" </head>
+<body>
+
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
 
     <body>
         <!-- Header du template -->
@@ -27,8 +34,16 @@
         <div class="container-fluid">
             <div class="row mt-3">
                 <div id="cadrePhoto" class="col-12 d-flex justify-content-center align-items-center">
-                    <div class="rond d-inline-flex align-items-center"><i class="fas fa-camera fa-3x mx-auto"></i></div>
+                    <div id="screenshot-button" class="rond d-inline-flex align-items-center"><i class="fas fa-camera fa-3x mx-auto"></i></div>
                     <div class="rond d-inline-flex align-items-center"><i class="fas fa-image fa-3x mx-auto"></i></div>
+                </div>
+                <!-- <input id="screenshot-button" type="file" accept="image/*" capture="camera"> -->
+            </div>
+            <div class="row mt-3">
+                <div id="cadrePhoto2" class="col-12 d-flex justify-content-center align-items-center">
+                    <video id="screenshot-video" class="videostream" autoplay></video>
+                    <img id="screenshot-img">
+
                 </div>
             </div>
             <div class="row py-3">
@@ -88,5 +103,58 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js " integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl " crossorigin="anonymous "></script>
     </body>
+
+
+
+
+    <script>
+        const constraints = {
+            video: true
+        };
+
+
+        (function() {
+            const button = document.querySelector('#screenshot-button');
+            const img = document.querySelector('#screenshot-img');
+            const video = document.querySelector('#screenshot-video');
+
+            const canvas = document.createElement('canvas');
+
+            button.onclick = video.onclick = function() {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                canvas.getContext('2d').drawImage(video, 0, 0, 300, 220);
+                // Other browsers will fall back to image/png
+                img.src = canvas.toDataURL('image/webp');
+                // $('#cadrePhoto2').children().hide();
+                // $('#cadrePhoto2').html("<img id='screenshot-img'>")
+            };
+
+            function handleSuccess(stream) {
+                video.srcObject = stream;
+            }
+
+            function handleError(error) {
+                console.error('navigator.getUserMedia error: ', error);
+            }
+
+            var hdConstraints = {
+                video: {
+                    width: {
+                        min: 640
+                    },
+                    height: {
+                        min: 480
+                    }
+                }
+            };
+
+            navigator.mediaDevices.getUserMedia(hdConstraints).
+            then(handleSuccess).catch(handleError);
+        })();
+    </script>
+
+
+</body>
 
 </html>

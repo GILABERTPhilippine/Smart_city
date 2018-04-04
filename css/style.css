@@ -1,0 +1,78 @@
+    /* Header */
+    
+    header {
+        height: 5vh;
+    }
+    /* hauteur diaporama */
+    
+    .carousel-inner {
+        height: 45vh;
+    }
+    /* Menu buttons */
+    
+    .menuButton {
+        width: 25vh;
+        height: 25vh;
+    }
+    
+    s #menu1 {
+        background-color: yellow;
+    }
+    
+    #menu2 {
+        background-color: pink;
+    }
+    
+    #menu3 {
+        background-color: blue;
+    }
+    
+    #menu4 {
+        background-color: red;
+    }
+    /* Style du formulaire */
+    
+    #cadrePhoto {
+        background-color: #E8E8E8;
+        /* border: solid 1px black; */
+        padding: 10px;
+    }
+    
+    .rond {
+        width: 130px;
+        height: 130px;
+        background: white;
+        -webkit-border-radius: 130px;
+        -moz-border-radius: 130px;
+        -o-border-radius: 130px;
+        border-radius: 130px;
+        margin: 30px;
+        -moz-box-shadow: 4px 4px 5px 0px #656565;
+        -webkit-box-shadow: 4px 4px 5px 0px #656565;
+        -o-box-shadow: 4px 4px 5px 0px #656565;
+        box-shadow: 4px 4px 5px 0px #656565;
+        /* filter: progid: DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5); */
+        /* align-items: center; */
+    }
+    
+    .rond:hover {
+        margin-bottom: 1px;
+        -moz-box-shadow: 1px 1px 1px 0px #656565;
+        -webkit-box-shadow: 1px 1px 1px 0px #656565;
+        -o-box-shadow: 1px 1px 1px 0px #656565;
+        box-shadow: 1px 1px 1px 0px #656565;
+    }
+    
+    .fa {
+        width: 50%;
+        color: Red;
+    }
+    
+    textarea {
+        resize: none;
+    }
+    /* Style test camera */
+    /* #screenshot-img {
+        width: 50%;
+        height: 50%;
+    } */
