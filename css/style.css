@@ -1,20 +1,20 @@
 /* Header */
 
-header{
+header {
     height: 7vh;
 }
 
-#logo{
+#logo {
     width: 5vh;
 }
 
 /* diaporama */
 
-#diaporama{
+#diaporama {
     background-image: linear-gradient(to left top, #170cef, #0031f1, #0046f1, #0057ef, #1265eb);
 }
 
-.carousel-inner{
+.carousel-inner {
     height: 43vh;
     display: flex;
     justify-content: flex-start;
@@ -22,8 +22,8 @@ header{
 
 /* Menu buttons */
 
-.menuButton{
-    color:white;
+.menuButton {
+    color: white;
     padding-top: 7vh;
     width: 25vh;
     height: 25vh;
@@ -80,4 +80,41 @@ a:hover {
 
 #filterButton {
     margin-right: 1vh;
+}
+
+/* Style du formulaire */
+
+#cadrePhoto {
+    background-color: #E8E8E8;
+    /* border: solid 1px black; */
+    padding: 10px;
+}
+
+.rond {
+    width: 130px;
+    height: 130px;
+    background: white;
+    -webkit-border-radius: 130px;
+    -moz-border-radius: 130px;
+    -o-border-radius: 130px;
+    border-radius: 130px;
+    margin: 30px;
+    -moz-box-shadow: 4px 4px 5px 0px #656565;
+    -webkit-box-shadow: 4px 4px 5px 0px #656565;
+    -o-box-shadow: 4px 4px 5px 0px #656565;
+    box-shadow: 4px 4px 5px 0px #656565;
+    /* filter: progid: DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5); */
+    /* align-items: center; */
+}
+
+.rond:hover {
+    margin-bottom: 1px;
+    -moz-box-shadow: 1px 1px 1px 0px #656565;
+    -webkit-box-shadow: 1px 1px 1px 0px #656565;
+    -o-box-shadow: 1px 1px 1px 0px #656565;
+    box-shadow: 1px 1px 1px 0px #656565;
+}
+
+textarea {
+    resize: none;
 }
