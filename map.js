@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var map;
 
     function init() {
@@ -36,5 +36,9 @@ $(document).ready(function() {
             maxZoom: 16
         });
     }
+
+    // Ajouter un marker manuelle et un pop attribuer à ce marker
+    var marker = L.marker([43.11, 1.61]).addTo(map);
+    marker.bindPopup("<b>Etat résolu</b>").openPopup();
 
 });
