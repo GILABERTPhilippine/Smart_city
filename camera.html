@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title></title>
-</head>
+<div class="row">
 
-<body>
+<h1>Hello</h1>
+</div>
 
     <head>
         <title>Title</title>
@@ -48,30 +47,38 @@
             </div>
             <div class="row py-3">
                 <div id="cadreForm" class="col-12 d-flex justify-content-center align-items-center">
-                    <form>
+                    <form action="requests/requests.php" method = "post">
+                    <div class="form-row">
+                            <div class="col-12 mb-3">
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Example file input</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
+                              </div>
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="col-12 mb-3">
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Votre commentaire</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="comments">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-12 mb-3">
                                 <label for="exampleInputEmail1">Adresse e-mail</label>
-                                <input type="email " class="form-control " id="exampleInputEmail1 " aria-describedby="emailHelp " placeholder="facultatif ">
+                                <input type="email " class="form-control " id="exampleInputEmail1 " aria-describedby="emailHelp " placeholder="facultatif " name="email">
                             </div>
                         </div>
 
                         <div class="form-row ">
                             <div class="col-6 mb-3 ">
                                 <label for="validationTooltip01">Prénom</label>
-                                <input type="text " class="form-control " id="validationTooltip01 " placeholder="Prénom" value="" required>
+                                <input type="text " class="form-control " id="validationTooltip01 " placeholder="Prénom" name="prenom">
                             </div>
                             <div class="col-6 mb-3">
                                 <label for="validationTooltip02 ">Nom</label>
-                                <input type="text " class="form-control " id="validationTooltip02 " placeholder="Nom" value="" required>
+                                <input type="text " class="form-control " id="validationTooltip02 " placeholder="Nom" name="nom">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -79,7 +86,7 @@
                                 <button type="button" class="btn btn-warning">Annuler</button>
                             </div>
                             <div class="col-6 d-flex justify-content-center">
-                                <button type="button" class="btn btn-success">Envoyer</button>
+                                <button type="submit" class="btn btn-success">Envoyer</button>
                             </div>
                         </div>
 
@@ -87,6 +94,8 @@
                 </div>
             </div>
         </div>
+
+       
 
 
 
