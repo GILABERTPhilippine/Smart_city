@@ -32,54 +32,53 @@
         <!-- Corps du template -->
 
         <div class="container-fluid">
-            <div class="row mt-3">
-                <div id="cadrePhoto" class="col-12 d-flex justify-content-center align-items-center">
-                    <div id="screenshot-button" class="rond d-inline-flex align-items-center"><i class="fas fa-camera fa-3x mx-auto"></i></div>
-                    <div class="rond d-inline-flex align-items-center"><i class="fas fa-image fa-3x mx-auto"></i></div>
+            <div class="boutonPhoto row mt-3">
+                <div id="cadreBouton" class="col-12 d-flex justify-content-center align-items-center">
+                    <label class="cameraButton rond d-inline-flex align-items-center"><i class="fas fa-camera fa-3x mx-auto"></i><input type="file" id="input" accept="image/*;capture=camera"></label>
                 </div>
-                <!-- <input id="screenshot-button" type="file" accept="image/*" capture="camera"> -->
-            </div>
-            <div class="row mt-3">
-                <div id="cadrePhoto2" class="col-12 d-flex justify-content-center align-items-center">
-                    <video id="screenshot-video" class="videostream" autoplay></video>
-                    <img id="screenshot-img">
 
-                </div>
             </div>
-            <div class="row py-3">
-                <div id="cadreForm" class="col-12 d-flex justify-content-center align-items-center">
+            <div class="row cadrePhoto">
+                <div id="photo"></div>
+            </div>
+            <div class="row cadreRetry">
+                <div id="validerBouton"></div>
+                <div id="SuppBouton"></div>
+            </div>
+            <div class=" row py-3 ">
+                <div id="cadreForm " class="col-12 d-flex justify-content-center align-items-center ">
                     <form>
-                        <div class="form-row">
-                            <div class="col-12 mb-3">
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Votre commentaire</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <div class="form-row ">
+                            <div class="col-12 mb-3 ">
+                                <div class="form-group ">
+                                    <label for="exampleFormControlTextarea1 ">Votre commentaire</label>
+                                    <textarea class="form-control " id="exampleFormControlTextarea1 " rows="3 "></textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="col-12 mb-3">
-                                <label for="exampleInputEmail1">Adresse e-mail</label>
+                        <div class="form-row ">
+                            <div class="col-12 mb-3 ">
+                                <label for="exampleInputEmail1 ">Adresse e-mail</label>
                                 <input type="email " class="form-control " id="exampleInputEmail1 " aria-describedby="emailHelp " placeholder="facultatif ">
                             </div>
                         </div>
 
                         <div class="form-row ">
                             <div class="col-6 mb-3 ">
-                                <label for="validationTooltip01">Prénom</label>
-                                <input type="text " class="form-control " id="validationTooltip01 " placeholder="Prénom" value="" required>
+                                <label for="validationTooltip01 ">Prénom</label>
+                                <input type="text " class="form-control " id="validationTooltip01 " placeholder="Prénom " value=" " required>
                             </div>
-                            <div class="col-6 mb-3">
+                            <div class="col-6 mb-3 ">
                                 <label for="validationTooltip02 ">Nom</label>
-                                <input type="text " class="form-control " id="validationTooltip02 " placeholder="Nom" value="" required>
+                                <input type="text " class="form-control " id="validationTooltip02 " placeholder="Nom " value=" " required>
                             </div>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col-6 d-flex justify-content-center">
-                                <button type="button" class="btn btn-warning">Annuler</button>
+                        <div class="row mt-3 ">
+                            <div class="col-6 d-flex justify-content-center ">
+                                <button type="button " class="btn btn-warning ">Annuler</button>
                             </div>
-                            <div class="col-6 d-flex justify-content-center">
-                                <button type="button" class="btn btn-success">Envoyer</button>
+                            <div class="col-6 d-flex justify-content-center ">
+                                <button id="send " type="button " class="btn btn-success ">Envoyer</button>
                             </div>
                         </div>
 
@@ -102,59 +101,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js " integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl " crossorigin="anonymous "></script>
+        <script src="camera.js "></script>
     </body>
-
-
-
-
-    <script>
-        const constraints = {
-            video: true
-        };
-
-
-        (function() {
-            const button = document.querySelector('#screenshot-button');
-            const img = document.querySelector('#screenshot-img');
-            const video = document.querySelector('#screenshot-video');
-
-            const canvas = document.createElement('canvas');
-
-            button.onclick = video.onclick = function() {
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                canvas.getContext('2d').drawImage(video, 0, 0, 300, 220);
-                // Other browsers will fall back to image/png
-                img.src = canvas.toDataURL('image/webp');
-                // $('#cadrePhoto2').children().hide();
-                // $('#cadrePhoto2').html("<img id='screenshot-img'>")
-            };
-
-            function handleSuccess(stream) {
-                video.srcObject = stream;
-            }
-
-            function handleError(error) {
-                console.error('navigator.getUserMedia error: ', error);
-            }
-
-            var hdConstraints = {
-                video: {
-                    width: {
-                        min: 640
-                    },
-                    height: {
-                        min: 480
-                    }
-                }
-            };
-
-            navigator.mediaDevices.getUserMedia(hdConstraints).
-            then(handleSuccess).catch(handleError);
-        })();
-    </script>
-
-
 </body>
 
 </html>

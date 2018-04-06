@@ -8,6 +8,7 @@ header {
     width: 5vh;
 }
 
+
 /* diaporama */
 
 #diaporama {
@@ -20,6 +21,7 @@ header {
     justify-content: flex-start;
 }
 
+
 /* Menu buttons */
 
 .menuButton {
@@ -29,6 +31,7 @@ header {
     height: 25vh;
     background-image: linear-gradient(to left top, #170cef, #0031f1, #0046f1, #0057ef, #1265eb);
 }
+
 
 /* Partie catégories */
 
@@ -76,18 +79,20 @@ a:hover {
     text-decoration: none;
 }
 
+
 /* Fin partie categories */
 
 #filterButton {
     margin-right: 1vh;
 }
 
+
 /* Style du formulaire */
 
-#cadrePhoto {
+#cadreBouton {
     background-color: #E8E8E8;
     /* border: solid 1px black; */
-    padding: 10px;
+    padding: 5px;
 }
 
 .rond {
@@ -108,7 +113,6 @@ a:hover {
 }
 
 .rond:hover {
-    margin-bottom: 1px;
     -moz-box-shadow: 1px 1px 1px 0px #656565;
     -webkit-box-shadow: 1px 1px 1px 0px #656565;
     -o-box-shadow: 1px 1px 1px 0px #656565;
@@ -117,4 +121,14 @@ a:hover {
 
 textarea {
     resize: none;
+}
+
+label.cameraButton input[accept*="camera"],
+#SuppBouton#crois input {
+    display: none;
+}
+
+.miniature {
+    height: 100%;
+    width: 70vw;
 }
