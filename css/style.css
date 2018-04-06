@@ -8,6 +8,7 @@ header {
     width: 5vh;
 }
 
+
 /* diaporama */
 
 #diaporama {
@@ -20,6 +21,7 @@ header {
     justify-content: flex-start;
 }
 
+
 /* Menu buttons */
 
 .menuButton {
@@ -29,6 +31,7 @@ header {
     height: 25vh;
     background-image: linear-gradient(to left top, #170cef, #0031f1, #0046f1, #0057ef, #1265eb);
 }
+
 
 /* Partie catégories */
 
@@ -76,15 +79,18 @@ a:hover {
     text-decoration: none;
 }
 
+
 /* Fin partie categories */
 
 #filterButton {
     margin-right: 1vh;
 }
 
+
 /* Style du formulaire */
 
-#cadrePhoto {
+#cadrePhoto,
+#cadrePhoto2 {
     background-color: #E8E8E8;
     /* border: solid 1px black; */
     padding: 10px;
@@ -118,3 +124,34 @@ a:hover {
 textarea {
     resize: none;
 }
+
+
+/* Style de l'input */
+
+label.cameraButton input[accept*="camera"] {
+    display: none;
+}
+
+label.suppButton input {
+    display: none;
+    -moz-box-shadow: 4px 4px 5px 0px #656565;
+    -webkit-box-shadow: 4px 4px 5px 0px #656565;
+    -o-box-shadow: 4px 4px 5px 0px #656565;
+    box-shadow: 4px 4px 5px 0px #656565;
+    /* filter: progid: DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5); */
+    /* align-items: center; */
+}
+
+label.suppButton input:hover {
+    margin-bottom: 1px;
+    -moz-box-shadow: 1px 1px 1px 0px #656565;
+    -webkit-box-shadow: 1px 1px 1px 0px #656565;
+    -o-box-shadow: 1px 1px 1px 0px #656565;
+    box-shadow: 1px 1px 1px 0px #656565;
+}
+
+
+/* .miniature {
+    width: 100%;
+    height: 30vh;
+} */
