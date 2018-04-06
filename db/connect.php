@@ -8,7 +8,4 @@ if ($connect->connect_errno) {
 }
 
 mysqli_set_charset($connect, 'utf8');
-
-echo "test affichage";
-
 ?>
