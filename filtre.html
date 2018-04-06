@@ -1,69 +1,73 @@
 <html>
 
 <head>
-    <title>Leaflet geolocate example</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/style.css">
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Filtre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet " href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css " integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm " crossorigin="anonymous ">
+    <link rel="stylesheet " href="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.css " />
+    <link rel="stylesheet " href="css/style.css ">
 
 
 </head>
 
 <body>
 
-    <header class="container-fluid">
-        <div class="row py-2">
-            <div id="returnButton" class="col-2">
-                <button type="button" class="btn btn-outline-dark">
-                            <i class="fas fa-angle-left"></i> Retour</button>
+    <header class="container-fluid ">
+        <div class="row py-2 ">
+            <div id="returnButton " class="col-2 ">
+                <button type="button " class="btn btn-outline-dark ">
+                            <i class="fas fa-angle-left "></i> Retour</button>
             </div>
-            <div id="title" class="col-6 text-center align-self-center mx-auto">MAP</div>
-            <div id="filterButton" class="col-2">
-                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal">
-                            <i class="fas fa-filter"></i>
+            <div id="title " class="col-6 text-center align-self-center mx-auto ">MAP</div>
+            <div id="filterButton " class="col-2 ">
+                <button type="button " class="btn btn-outline-dark " data-toggle="modal " data-target="#myModal ">
+                            <i class="fas fa-filter "></i>
                         </button>
                 <!-- The Modal -->
-                <div class="modal fade" id="myModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
+                <div class="modal fade " id="myModal ">
+                    <div class="modal-dialog ">
+                        <div class="modal-content ">
 
                             <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Tri par catégorie</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <div class="modal-header ">
+                                <h4 class="modal-title ">Tri par catégorie</h4>
+                                <button type="button " class="close " data-dismiss="modal ">&times;</button>
                             </div>
 
                             <!-- Modal body -->
-                            <div class="modal-body">
-                                <div class="input-group">
-                                    <input type="checkbox" data-target="" aria-label="Checkbox for following text input">&nbsp Dégradations urbaines
+                            <div class="modal-body ">
+                                <div class="input-group ">
+                                    <input type="checkbox " data-target=" " aria-label="Checkbox for following text input ">&nbsp Dégradations urbaines
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" aria-label="Checkbox for following text input">&nbsp Propreté de la ville
+                                <div class="input-group ">
+                                    <input type="checkbox " aria-label="Checkbox for following text input ">&nbsp Propreté de la ville
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" aria-label="Checkbox for following text input">&nbsp Voirie / chausée
+                                <div class="input-group ">
+                                    <input type="checkbox " aria-label="Checkbox for following text input ">&nbsp Voirie / chausée
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" aria-label="Checkbox for following text input">&nbsp Eclairage public
+                                <div class="input-group ">
+                                    <input type="checkbox " aria-label="Checkbox for following text input ">&nbsp Eclairage public
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" aria-label="Checkbox for following text input">&nbsp Animaux perdu / errants
+                                <div class="input-group ">
+                                    <input type="checkbox " aria-label="Checkbox for following text input ">&nbsp Animaux perdu / errants
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" aria-label="Checkbox for following text input">&nbsp Espace vert
+                                <div class="input-group ">
+                                    <input type="checkbox " aria-label="Checkbox for following text input ">&nbsp Espace vert
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" aria-label="Checkbox for following text input">&nbsp Encombrant
+                                <div class="input-group ">
+                                    <input type="checkbox " aria-label="Checkbox for following text input ">&nbsp Encombrant
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" aria-label="Checkbox for following text input">&nbsp Autres
+                                <div class="input-group ">
+                                    <input type="checkbox " aria-label="Checkbox for following text input ">&nbsp Autres
                                 </div>
                             </div>
 
                             <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Appliquer</button>
+                            <div class="modal-footer ">
+                                <button type="button " class="btn btn-success " data-dismiss="modal ">Appliquer</button>
                             </div>
 
                         </div>
@@ -72,16 +76,14 @@
             </div>
         </div>
     </header>
-    <div id="map" style="height: 200px"></div>
-    <!-- <input type="button" value="Locate me!" onClick="javascript:getLocationLeaflet();"> -->
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="map.js"></script>
-
+    <div id="map" class="mt-1"></div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js " integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb " crossorigin="anonymous "></script>
+    <script src="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js " integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl " crossorigin="anonymous "></script>
+    <script type="text/javascript " src="map.js "></script>
 </body>
 
 </html>

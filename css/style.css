@@ -87,6 +87,14 @@ a:hover {
 }
 
 
+/* Taille de la carte */
+
+#map {
+    height: 80vh;
+    width: 100vw;
+}
+
+
 /* Style du formulaire */
 
 #cadreBouton {
