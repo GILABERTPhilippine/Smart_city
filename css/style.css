@@ -89,6 +89,7 @@ a:hover {
 
 /* Page filtre */
 
+
 /* Taille de la carte */
 
 #map {
@@ -101,13 +102,11 @@ a:hover {
     margin-left: 35%;
 }
 
+
 /* Style du formulaire */
 
-#cadrePhoto,
-#cadrePhoto2 {
+#cadrePhoto {
     background-color: #E8E8E8;
-    /* border: solid 1px black; */
-    padding: 5px;
 }
 
 .rond {
@@ -138,6 +137,7 @@ textarea {
     resize: none;
 }
 
+
 /* Style de l'input */
 
 label.cameraButton input[accept*="camera"] {
@@ -162,8 +162,7 @@ label.suppButton input:hover {
     box-shadow: 1px 1px 1px 0px #656565;
 }
 
-
-/* .miniature {
-    width: 100%;
-    height: 30vh;
-} */
+.miniature {
+    width: 70vw;
+    height: 100%;
+}
