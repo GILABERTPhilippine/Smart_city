@@ -87,13 +87,27 @@ a:hover {
 }
 
 
+/* Page filtre */
+
+/* Taille de la carte */
+
+#map {
+    height: 60vh;
+    width: 100vw;
+}
+
+#contribuer {
+    margin-top: 8%;
+    margin-left: 35%;
+}
+
 /* Style du formulaire */
 
 #cadrePhoto,
 #cadrePhoto2 {
     background-color: #E8E8E8;
     /* border: solid 1px black; */
-    padding: 10px;
+    padding: 5px;
 }
 
 .rond {
@@ -114,7 +128,6 @@ a:hover {
 }
 
 .rond:hover {
-    margin-bottom: 1px;
     -moz-box-shadow: 1px 1px 1px 0px #656565;
     -webkit-box-shadow: 1px 1px 1px 0px #656565;
     -o-box-shadow: 1px 1px 1px 0px #656565;
@@ -124,7 +137,6 @@ a:hover {
 textarea {
     resize: none;
 }
-
 
 /* Style de l'input */
 

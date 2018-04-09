@@ -1,64 +1,44 @@
-// Voilà une esquisse de la page affichant la map et permettant de géolocaliser une personne
-// reste à trouver le moyen d'afficher: récupérer les coordonnées GPS avec la méthode leaflet 
-// voir http://leafletjs.com/reference-1.3.0.html
-// et https://www.mapbox.com/studio/styles/julienchenel/cjfdz2p2fa5g92sq0dzgxf95o/
+$(document).ready(function () {
+    var map;
 
-// la méthode "latlng" le permet mais je n'y arrive pas encore. Voir le code à la fin du fichier
+    function init() {
+        map = new L.Map('map');
+        L.tileLayer('https://api.mapbox.com/styles/v1/julienchenel/cjfdz2p2fa5g92sq0dzgxf95o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoianVsaWVuY2hlbmVsIiwiYSI6ImNqZmR6MGhvYjJiOGo0YXFoejFobXJqaGIifQ.SZ2HjrSNVhc7hCyXZlDv9A', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+            maxZoom: 18
+        }).addTo(map);
+        map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text.
 
-// Pour la capture de la caméra, pas de code sur cette page voir la 
-// source : https://www.html5rocks.com/en/tutorials/getusermedia/intro/ pour plus d'info
+        // map view before we get the location
+        map.setView(new L.LatLng(43.116312, 1.612136), 13);
+    }
 
+    init();
+    getLocationLeaflet();
 
+    function onLocationFound(e) {
+        var radius = e.accuracy / 2;
+        var location = e.latlng
+        L.marker(location).addTo(map)
+        L.circle(location, radius).addTo(map);
+    }
 
-// Parametrage de l'api https://www.mapbox.com/studio/styles/julienchenel/cjfdz2p2fa5g92sq0dzgxf95o/
+    function onLocationError(e) {
+        alert(e.message);
+    }
 
-// Doc pour afficher des marqueurs dt les infos st dans une base de donnée:
-// https://openclassrooms.com/forum/sujet/affichage-de-marqueurs-sur-une-carte-dynamique
+    function getLocationLeaflet() {
+        map.on('locationfound', onLocationFound);
+        map.on('locationerror', onLocationError);
 
-// un marqueur draggable pour la version bureau
-//https://www.touraineverte.fr/google-maps-api-version-3/exemple-tutoriel-marqueurs-markers/afficher-latitude-longitude-marqueur-title-dragend-position_changed.html
+        map.locate({
+            setView: true,
+            maxZoom: 16
+        });
+    }
 
-var map = L.map('map').fitWorld();
+    // Ajouter un marker manuelle et un pop attribuer à ce marker
+    var marker = L.marker([43.11, 1.61]).addTo(map);
+    marker.bindPopup("<b>Etat résolu</b>").openPopup();
 
-L.tileLayer('https://api.mapbox.com/styles/v1/julienchenel/cjfdz2p2fa5g92sq0dzgxf95o/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoianVsaWVuY2hlbmVsIiwiYSI6ImNqZmR6MGhvYjJiOGo0YXFoejFobXJqaGIifQ.SZ2HjrSNVhc7hCyXZlDv9A', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18
-}).addTo(map);
-
-// Localisation de l'utilisateur et paramètrage du zoom de la carte
-
-map.locate({setView: true, maxZoom: 40});
-
-
-// Positionnement du marqueur et du cercle de l'utilisateur sur la carte
-
-function onLocationFound(e) {
-    var radius = e.accuracy / 2;
-
-    L.marker(e.latlng).addTo(map)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
-
-    L.circle(e.latlng, radius).addTo(map);
-}
-
-map.on('locationfound', onLocationFound);
-
-// Message d'erreur en cas d'échec
-
-function onLocationError(e) {
-    alert(e.message);
-}
-
-map.on('locationerror', onLocationError);
-
-//Affichage des coordonnées (NON FONCTIONNEL):
-
-
-console.log("<center> Coordinates : </center>" +"<br>" +latlng.lat + "; " + latlng.lng + "</br>"+"<a id="+e.latlng.lat+"_"+e.latlng.lng+"></a>"+ "<br><center><input type='button' value='Delete this marker' class='marker-delete-button' onclick='SupOne()'/></center></br>");
- 
- 
- 
-function SupOne() {
-    tempMarker=this
-    tab.removeLayer(tempMarker);
-}
+});
