@@ -2,48 +2,104 @@
 <html lang="fr">
 
 <head>
+    <title>Accueil</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title>HTML5 : Géolocalisation</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="leaflet.css" />
-    <link rel="stylesheet" type="text/css" href="css/map.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
-
-
-    <!-- POSITION de l'utilisateur avec la méthode trouvée sur https://www.alsacreations.com/tuto/lire/926-geolocalisation-geolocation-html5.html
--->
-    <!-- <div id="infoposition"></div> -->
-
-    <!-- <script>
-function maPosition(position) {
-  var infopos = "Position déterminée :\n";
-  infopos += "Latitude : "+position.coords.latitude +"\n";
-  infopos += "Longitude: "+position.coords.longitude+"\n";
-  infopos += "Altitude : "+position.coords.altitude +"\n";
-  document.getElementById("infoposition").innerHTML = infopos;
-}
-
-if(navigator.geolocation)
-  navigator.geolocation.getCurrentPosition(maPosition);
-</script>
- -->
     <!-- Header du template -->
-
     <header class="container-fluid">
-        <div class="row py-1">
-            <div id="returnButton" class="offset-1 col-2"><button type="button" class="btn btn-outline-dark"><i class="fas fa-angle-left"></i> Retour</button></div>
-            <div id="title" class="col-6 text-center align-self-center">Title</div>
-            <div id="filterButton" class="col-2"><button type="button" class="btn btn-outline-dark"><i class="fas fa-filter"></i></button></div>
+        <div class="row">
+            <div class="offset-1 col-2"></div>
+            <div id="title" class="col-6 text-center align-self-center">
+                <img id="logo" src="images/logo_pamiers.jpg">
+            </div>
+            <div class="col-2"></div>
         </div>
     </header>
+    <!-- Corps du template -->
+    <main>
 
-    <div id="map"></div>
+        <div id="diaporama" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#diaporama" data-slide-to="0" class="active"></li>
+                <li data-target="#diaporama" data-slide-to="1"></li>
+                <li data-target="#diaporama" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block h-100 mx-auto" src="https://picsum.photos/200/300?image=546" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block h-100 mx-auto" src="https://picsum.photos/200/300?image=1073" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block h-100 mx-auto" src="https://picsum.photos/200/300?image=670" alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#diaporama" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#diaporama" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div class="container-fluid ">
+            <div class="row">
+                <a id="menu1" class="col menuButton text-center" href="filtre.html">
+                    <p>Notifier</p>
+                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                </a>
+                <a id="menu2" class="col menuButton text-center" href="#link2">
+                    <p>Donner mon avis</p>
+                    <i class="far fa-comments fa-2x"></i>
+                </a>
+            </div>
+
+            <div class="row">
+                <a id="menu3" class="col menuButton text-center" href="#link3">
+                    <p>Contacter</p>
+                    <i class="fas fa-envelope fa-2x"></i>
+                </a>
+                <a id="menu4" class="col menuButton text-center" href="#link4">
+                    <p>S'informer</p>
+                    <i class="fas fa-info-circle fa-2x"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
 
 
-    <script src="leaflet.js"></script>
-    <script type="text/javascript" src="map.js"></script>
+
+    <!-- Footer du template -->
+    <footer>
+
+    </footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
