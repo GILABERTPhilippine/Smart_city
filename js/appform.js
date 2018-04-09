@@ -1,4 +1,7 @@
-function handleFiles(files) {
+
+$(document).ready(function(){
+    
+    function handleFiles(files) {
     for (var i = 0; i < files.length; i++) {
         console.log(files.length)
         var file = files[i];
@@ -31,3 +34,13 @@ function removePhoto() {
     $("#supprimer").children().hide();
     $('#cadrePhoto').children().show();
 }
+
+//Récupération de la catégorie depuis le sessionstorage
+
+var cat = sessionStorage.getItem("categorie");
+console.log(cat);
+$("#title").text(cat);
+
+
+
+});

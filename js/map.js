@@ -41,4 +41,15 @@ $(document).ready(function () {
     var marker = L.marker([43.11, 1.61]).addTo(map);
     marker.bindPopup("<b>Etat résolu</b>").openPopup();
 
+    //Stocker lat et lon dans le localstorage
+
+    var lat = 43.116312;
+    var lon = 1.61;
+
+    console.log(lat);
+    console.log(lon);
+
+    sessionStorage.setItem("lat",lat);
+    sessionStorage.setItem("lon",lon);
+    
 });
