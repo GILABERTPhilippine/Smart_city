@@ -67,14 +67,17 @@
     //     'obj4':{'lat' : 43.4, 'lon' : 1.6, 'cat' : 1},
     //     'obj5':{'lat' : 43.5, 'lon' : 1.6, 'cat' : 1},
     //     };
-    console.log(localStorage.getItem("userMarkers")=="[object Object]");
-    if (localStorage.getItem("userMarkers")=="[object Object]"){
-        //Initialiser l'objet dans le localstorage
+
+
+    console.log(localStorage.getItem("userMarkers")==null);
+    if (localStorage.getItem("userMarkers")==null){
+        // Initialiser l'objet dans le localstorage
         var userMarkers = {"obj1":{"lat":lat,"lon":lon,"cat":cat}};
         localStorage.setItem("userMarkers",JSON.stringify(userMarkers));
         getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
         console.log("getUserMarkers if : ",getUserMarkers);
-    }else{
+    }
+    else{
 
     getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
     console.log("getUserMarkers else : ",getUserMarkers );
