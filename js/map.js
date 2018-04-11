@@ -38,10 +38,61 @@ $(document).ready(function () {
     }
 
     // Ajouter un marker manuelle et un pop attribuer à ce marker
-    var marker = L.marker([43.11, 1.61]).addTo(map);
-    marker.bindPopup("<b>Etat résolu</b>").openPopup();
+    // var marker = L.marker([43.11, 1.61]).addTo(map);
+    // marker.bindPopup("<b>Etat résolu</b>").openPopup();
 
-    //Stocker lat et lon dans le localstorage
+
+    //Récupération des points gps entrés par l'utilisateur depuis le localstorage
+    var getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
+    console.log(getUserMarkers);
+
+    //Obtenir la taille d'un objet
+    Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+    };
+    
+    //Obtenir le nombre de paires clés/valeurs stockées dans l'objet getUserMarkers
+    var objSize = Object.size(getUserMarkers);
+    console.log("size : ",Object.size(getUserMarkers));
+
+    var userMarkersKey = Object.keys(getUserMarkers);
+    console.log(userMarkersKey);
+    var userMarkersValue = Object.values(getUserMarkers);
+    console.log(userMarkersValue);
+
+    //Itération sur clés/valeurs de l'objet et contruction des coordonnnées gps
+    //Limite le nombre d'itération au nombre de clés/valeurs déjà stockées via objSize
+
+  
+
+function createMarkers(){
+  //Création du tableau contenant les différentes coordonnées utilisateur
+  var markers = [];
+
+    for(var i = 0; i <= objSize-1;i++){
+        //récupération de la clé à chaque itération
+        var key = userMarkersKey[i];
+        //récupération de la valeur à chaque itération
+        var values = userMarkersValue[i];
+        console.log("clé", key);
+        console.log("valeurs", values);
+        console.log("latitude",values.lat);
+        console.log("longitude",values.lon);
+        console.log("categorie",values.cat);
+        //Récupération des valeurs correspondant aux clés, lat,lon et cat
+        var latitude = values.lat;
+        var longitude = values.lon;
+        var categorie = values.cat;
+        //Ajout du point sur la carte
+        markers = L.marker([latitude, longitude]).addTo(map).bindPopup("<b>"+categorie+"</b>").openPopup();
+        }
+}
+
+createMarkers();
 
     var lat = 43.116312;
     var lon = 1.61;
