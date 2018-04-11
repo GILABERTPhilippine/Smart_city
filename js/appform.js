@@ -52,8 +52,8 @@ console.log(lon);
 //Stocker le point gps dans un objet userMarkers
 
 var userMarkers = {
-    'obj1':{'lat' : 43.1, 'lon' : 1.6, 'cat' : 1},
-    'obj2':{'lat' : 43.2, 'lon' : 1.6, 'cat' : 1},
+    'obj1':{'lat' : "43.1", 'lon' : "1.6", 'cat' : "1"},
+    'obj2':{'lat' : '43.2', 'lon' : '1.6', 'cat' : '1'},
     'obj3':{'lat' : 43.3, 'lon' : 1.6, 'cat' : 1},
     'obj4':{'lat' : 43.4, 'lon' : 1.6, 'cat' : 1},
     'obj5':{'lat' : 43.5, 'lon' : 1.6, 'cat' : 1},
@@ -74,9 +74,10 @@ var objSize = Object.size(userMarkers);
 console.log("size : ",Object.size(userMarkers));
 
 var userMarkersKey = Object.keys(userMarkers);
+// console.log(userMarkersKey);
 var userMarkersValue = Object.values(userMarkers);
+// console.log(userMarkersValue);
 
-// console.log("keyUserMarker",userMarkersValue);
 
 // Itération sur clés/valeurs de l'objet et contruction des coordonnnées gps
 
@@ -113,7 +114,7 @@ var userMarkers = JSON.parse(localStorage.getItem("userMarkers"));
 var objetNumber = objSize+1;
 var objet = 'obj'+objetNumber;
 console.log("objet:",objet);
-newEntry = JSON.stringify({'lat' :lat,'lon':lon,'cat' :cat},);
+newEntry = {'lat' :lat,'lon':lon,'cat' :cat};
 console.log(newEntry);
 userMarkers[objet]= newEntry;
 
