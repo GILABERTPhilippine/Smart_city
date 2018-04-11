@@ -1,4 +1,4 @@
-// $(document).ready(function () {
+$(document).ready(function () {
 var map;
 
 function init() {
@@ -14,6 +14,7 @@ function init() {
 }
 
 init();
+
 getLocationLeaflet();
 
 function onLocationFound(e) {
@@ -37,39 +38,64 @@ function getLocationLeaflet() {
     });
 }
 
+//######A Modifier#####
+//Valeurs des variables fixées pour test
+var lat = 43.116312;
+var lon = 1.61;
+console.log(lat);
+console.log(lon);
+
+//######A Modifier#####
+
+
+//Stockage des valeurs dans le sessionStorage
+sessionStorage.setItem("lat", lat);
+sessionStorage.setItem("lon", lon);
+
 //Récupération des points gps entrés par l'utilisateur depuis le localstorage
 
-    //Obtenir la taille d'un objet
-    Object.size = function (obj) {
-        var size = 0,
-            key;
-        for (key in obj) {
-            if (obj.hasOwnProperty(key)) size++;
-        }
-        return size;
-    };
-    
-// console.log(getUserMarkers);
+//Obtenir le nombre d'enregistrements / la taille d'un objet
+Object.size = function (obj) {
+    var size = 0,
+        key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
 
-//Si le localstorage n'est pas vide
-if (getUserMarkers) {
+//Vérification de la présence de l'objet userMarkers dans le locastorage 
+console.log("userMarkers?",localStorage.getItem("userMarkers")==!null);
+
+//######A Modifier#####
+
+// if (localStorage.getItem("userMarkers")==!null) {
+
+//######A Modifier#####
+
 var getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
-
+console.log("getUserMarkers if :",getUserMarkers);
 
 //Obtenir le nombre de paires clés/valeurs stockées dans l'objet getUserMarkers
 var objSize = Object.size(getUserMarkers);
-// console.log("size : ",Object.size(getUserMarkers));
+console.log("size : ",Object.size(getUserMarkers));
 
 var userMarkersKey = Object.keys(getUserMarkers);
-// console.log(userMarkersKey);
+console.log(userMarkersKey);
 var userMarkersValue = Object.values(getUserMarkers);
-// console.log(userMarkersValue);
+console.log(userMarkersValue);
 
-}
+//Création et affichage des points de relevés utilisateur
+createMarkers();
+
+//######A Modifier#####
+
+// }
+
+//######A Modifier#####
 
 
-
-//Itération sur clés/valeurs de l'objet et contruction des coordonnnées gps
+//Itération sur les clés/valeurs de l'objet et contruction des coordonnnées gps
 //Limite le nombre d'itération au nombre de clés/valeurs déjà stockées via objSize
 
 function createMarkers() {
@@ -79,11 +105,11 @@ function createMarkers() {
         var key = userMarkersKey[i];
         //récupération de la valeur à chaque itération
         var values = userMarkersValue[i];
-        // console.log("clé", key);
-        // console.log("valeurs", values);
-        // console.log("latitude",values.lat);
-        // console.log("longitude",values.lon);
-        // console.log("categorie",values.cat);
+        console.log("clé", key);
+        console.log("valeurs", values);
+        console.log("latitude",values.lat);
+        console.log("longitude",values.lon);
+        console.log("categorie",values.cat);
         //Récupération des valeurs correspondant aux clés, lat,lon et cat
         var latitude = values.lat;
         var longitude = values.lon;
@@ -93,6 +119,7 @@ function createMarkers() {
         switch (categorie) {
 
             case 'Dégradations urbaines':
+            //Création d'un point de relevé et affichage sur la carte avec un popup et la couleur correspondante (ex : markerBleuF)
                 markers = L.marker([latitude, longitude], {
                     icon: markerBleuF
                 }).addTo(map).bindPopup("<b>" + categorie + "</b>").openPopup();
@@ -147,15 +174,4 @@ function createMarkers() {
     }
 }
 
-createMarkers();
-
-var lat = 43.116312;
-var lon = 1.61;
-
-console.log(lat);
-console.log(lon);
-
-sessionStorage.setItem("lat", lat);
-sessionStorage.setItem("lon", lon);
-
-// });
+});
