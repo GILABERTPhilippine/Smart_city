@@ -8,7 +8,6 @@ header {
     width: 5vh;
 }
 
-
 /* diaporama */
 
 #diaporama {
@@ -21,7 +20,6 @@ header {
     justify-content: flex-start;
 }
 
-
 /* Menu buttons */
 
 .menuButton {
@@ -31,7 +29,6 @@ header {
     height: 25vh;
     background-image: linear-gradient(to left top, #170cef, #0031f1, #0046f1, #0057ef, #1265eb);
 }
-
 
 /* Partie catégories */
 
@@ -79,16 +76,13 @@ a:hover {
     text-decoration: none;
 }
 
-
 /* Fin partie categories */
 
 #filterButton {
     margin-right: 1vh;
 }
 
-
 /* Page filtre */
-
 
 /* Taille de la carte */
 
@@ -101,7 +95,6 @@ a:hover {
     margin-top: 8%;
     margin-left: 35%;
 }
-
 
 /* Style du formulaire */
 
@@ -136,7 +129,6 @@ a:hover {
 textarea {
     resize: none;
 }
-
 
 /* Style de l'input */
 

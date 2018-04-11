@@ -37,9 +37,61 @@ $(document).ready(function () {
         });
     }
 
-    // Ajouter un marker manuelle et un pop attribuer à ce marker
-    var marker = L.marker([43.11, 1.61]).addTo(map);
+    var markerBleu = L.icon({
+        className: 'my-icon',
+        iconUrl: 'markers/map-marker-bleu.svg',
+        iconSize: [38, 95],
+    });
+
+    var markerBleuF = L.icon({
+        className: 'my-icon',
+        iconUrl: 'markers/map-marker-bleuF.svg',
+        iconSize: [38, 95],
+    });
+
+    var markerGris = L.icon({
+        className: 'my-icon',
+        iconUrl: 'markers/map-marker-gris.svg',
+        iconSize: [38, 95],
+    });
+
+    var markerNoir = L.icon({
+        className: 'my-icon',
+        iconUrl: 'markers/map-marker-noir.svg',
+        iconSize: [38, 95],
+    });
+
+    var markerOrange = L.icon({
+        className: 'my-icon',
+        iconUrl: 'markers/map-marker-orange.svg',
+        iconSize: [38, 95],
+    });
+
+    var markerRouge = L.icon({
+        className: 'my-icon',
+        iconUrl: 'markers/map-marker-rouge.svg',
+        iconSize: [38, 95],
+    });
+
+    var markerVert = L.icon({
+        className: 'my-icon',
+        iconUrl: 'markers/map-marker-vert.svg',
+        iconSize: [38, 95],
+    });
+
+    var markerViolet = L.icon({
+        className: 'my-icon',
+        iconUrl: 'markers/map-marker-violet.svg',
+        iconSize: [38, 95],
+    });
+
+    // Ajouter un marker manuellement et un popup attribuer à ce marker
+    var marker = L.marker([43.11, 1.61], {
+        icon: markerViolet
+    }).addTo(map);
     marker.bindPopup("<b>Etat résolu</b>").openPopup();
+
+
 
     //Stocker lat et lon dans le localstorage
 
@@ -49,7 +101,7 @@ $(document).ready(function () {
     console.log(lat);
     console.log(lon);
 
-    sessionStorage.setItem("lat",lat);
-    sessionStorage.setItem("lon",lon);
-    
+    sessionStorage.setItem("lat", lat);
+    sessionStorage.setItem("lon", lon);
+
 });
