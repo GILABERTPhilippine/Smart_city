@@ -67,16 +67,17 @@
     //     'obj4':{'lat' : 43.4, 'lon' : 1.6, 'cat' : 1},
     //     'obj5':{'lat' : 43.5, 'lon' : 1.6, 'cat' : 1},
     //     };
-    
-    if (!localStorage.getItem("userMarkers")){
+    console.log(localStorage.getItem("userMarkers")=="[object Object]");
+    if (localStorage.getItem("userMarkers")=="[object Object]"){
         //Initialiser l'objet dans le localstorage
-        var userMarkers = {'obj1':{'lat':lat,'lon':lon,'cat':cat}};
-        localStorage.setItem("userMarkers",userMarkers);
-        console.log("getUserMarkers : ",getUserMarkers );
+        var userMarkers = {"obj1":{"lat":lat,"lon":lon,"cat":cat}};
+        localStorage.setItem("userMarkers",JSON.stringify(userMarkers));
+        getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
+        console.log("getUserMarkers if : ",getUserMarkers);
     }else{
 
-    var getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
-    console.log("getUserMarkers : ",getUserMarkers );
+    getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
+    console.log("getUserMarkers else : ",getUserMarkers );
 
     
     //Nombre d'enregistrements dans l'objet
@@ -88,7 +89,7 @@
     var objetNumber = objSize+1;
     var objet = 'obj'+objetNumber;
     console.log("objet:",objet);
-    newEntry = {'lat' :lat,'lon':lon,'cat' :cat};
+    newEntry = {"lat" :lat,"lon":lon,"cat" :cat};
     console.log(newEntry);
     getUserMarkers[objet]= newEntry;
     

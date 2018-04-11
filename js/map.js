@@ -38,7 +38,6 @@ function getLocationLeaflet() {
 }
 
 //Récupération des points gps entrés par l'utilisateur depuis le localstorage
-var getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
 
     //Obtenir la taille d'un objet
     Object.size = function (obj) {
@@ -54,6 +53,8 @@ var getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
 
 //Si le localstorage n'est pas vide
 if (getUserMarkers) {
+var getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
+
 
 //Obtenir le nombre de paires clés/valeurs stockées dans l'objet getUserMarkers
 var objSize = Object.size(getUserMarkers);
