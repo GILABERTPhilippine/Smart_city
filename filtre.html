@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Filtre</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.css" />
     <link rel="stylesheet" href="css/style.css">
 
@@ -28,9 +27,12 @@
             </div>
             <div id="title" class="col-6 text-center align-self-center mx-auto">Carte</div>
             <div id="filterButton" class="col-2">
+                <!-- Icône "filtre" à retirer en fin de projet -->
                 <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal">
                     <i class="fas fa-filter"></i>
                 </button>
+                <!-- Icône "filtre" à retirer en fin de projet -->
+
                 <!-- The Modal -->
                 <div class="modal fade" id="myModal">
                     <div class="modal-dialog">
@@ -45,7 +47,7 @@
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <div class="input-group">
-                                    <input type="checkbox" aria-label="Checkbox for following text input">&nbsp Dégradations urbaines
+                                    <input id="degraUrb" type="checkbox" aria-label="Checkbox for following text input">&nbsp Dégradations urbaines
                                 </div>
                                 <div class="input-group">
                                     <input type="checkbox" aria-label="Checkbox for following text input">&nbsp Propreté de la ville
@@ -72,11 +74,12 @@
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Appliquer</button>
+                                <button type="button" class="btn btn-success" onclick="filtrer()" data-dismiss="modal">Appliquer</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </header>
@@ -92,15 +95,11 @@
 
 
     <!-- Script -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
-        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/map.js"></script>
 </body>
 
