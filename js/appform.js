@@ -68,7 +68,7 @@ Object.size = function(obj) {
 
 //Vérification de la présence de l'objet userMarkers dans le locastorage 
 console.log(localStorage.getItem("userMarkers")==null);
-
+$("#envoi").on('click', function(){
 if (localStorage.getItem("userMarkers")==null){
     // Initialiser l'objet dans le localstorage
     var userMarkers = {"obj1":{"lat":lat,"lon":lon,"cat":cat}};
@@ -98,8 +98,9 @@ if (localStorage.getItem("userMarkers")==null){
     //Stocker le nouveau tableau dans l'objet userMarkers du localStorage
     setUserMarkers = localStorage.setItem("userMarkers", JSON.stringify(getUserMarkers));
 }
+})
 
-console.log("getUserMarkers",getUserMarkers);
+// console.log("getUserMarkers",getUserMarkers);
 
 
 });
