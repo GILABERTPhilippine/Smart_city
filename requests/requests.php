@@ -19,10 +19,36 @@ $prenom = $_POST['prenom'];
 $email = $_POST['email'];
 $comments = $_POST['comments'];
 
+//########Debug upload de fichiers########
+
+// echo " var_dump = ".var_dump($_FILES);//renvoi le contenu d'un tableau associatif
+// echo " print_r = ".print_r($_FILES);//Renvoie true or false
+
+//########Debug upload de fichiers########
+
+
+if(!empty($_FILES['photo']))
+{ 
+    //Création du chemin absolu du dossier d'upload
+    //RQ: aouter un "/" au debut du chemin pour indiquer la racine et un "/" à la fin pour indiquer que le dossier d'upload est bien un dossier (sinon le nom de dossier et interprété comme un prefixe de type texte à ajouter au nom du fichier récupéré).
+     $dossier = '/var/www/html/Smart_city/uploads/';
+     //Création du nom de fichier à copier
+     $fichier = basename($_FILES['photo']['name']);
+     //Déplacement du fichier temporaire dans le dossier upload avec le nom de fichier correspondant
+     //Si la fonction renvoie TRUE, c'est l'upload s'est déroulé correctement
+     if(move_uploaded_file($_FILES['photo']['tmp_name'], $dossier . $fichier)){
+          echo 'Upload effectué avec succès !';
+    //Sinon (la fonction renvoie FALSE).
+     }else{ 
+          echo 'Echec de l\'upload !';
+     }
+}
+       
+//Stockage le chemin de stockage de la photo
+$photo = $dossier.$fichier;
+
 //########Partie à Modifier########
 
-$photo = 'picture_name';//Fixé pour test (Contruction du chemin de stockage de l aphoto à partir du nom de la photo)
-// $photo = $_POST['photo'];
 
 //Récupérer les données utilisateur suivantes:
 $lati = 43.1147530;//Fixé pour test
@@ -64,20 +90,11 @@ if(!empty($comments)){
 }
 
 // Création des variables de la requete d'insertion d'une "nouvelle photo" si les champs sont remplis
-
-//########Partie à Modifier########
-
-$path = "path_test".$photo;//Fixé pour test
-
-//$valPhoto correspond à la valeur de la colonne picture_loc en base
-//Comment générer le chemin suivant? "nom_dossier/nom_image.extension"
-//Comment enregistrer un fichier sur un serveur???
+//RQ : $valPhoto correspond à la valeur de la colonne picture_loc en base
 
 if(!empty($photo)){
-    $valPhoto = ",'".$path."'";
+    $valPhoto = ",'".$photo."'";
 }
-
-//########Partie à Modifier########
 
 //Récupération du dernier id signalement
 
@@ -169,6 +186,11 @@ if(!empty($photo) && !empty($send==true)){
     $updateSignalPhoto=$connect->query("UPDATE t_signalements SET id_photos = ".$valIdPhotos." WHERE id_signalements =".$valIdSignal.";") or exit("Erreur sur updateSignalPhoto ({$connect->errno}): {$connect->error}");
     }
 
+// Redirection vers la carte
+// echo "<p>Juju</p>";
+// header('Location: ../filtre.html');
+
+
 //########Partie à Modifier########
 
 //Fonction query à créer
@@ -180,7 +202,42 @@ if(!empty($photo) && !empty($send==true)){
 
 //########Partie à Modifier########
 
-//########Partie Debug########
-echo "<br>id_user :".$id_user."<br> id_roles : ".$id_roles."<br> nom : ".$nom."<br> prenom : ".$prenom."<br> mail :".$email."<br> id_comments :".$id_comments."<br> commentaire :".$comments."<br> id_signalements : ".$id_signalements."<br> valIdSignal : ".$valIdSignal."<br> id_photos : ".$id_photos."<br> send status : ".$send."<br> date :".$date_s;
-
+//########Debug affichage des variables pour contrôle résultats########
+// echo "<br>id_user :".$id_user."<br> id_roles : ".$id_roles."<br> nom : ".$nom."<br> prenom : ".$prenom."<br> mail :".$email."<br> id_comments :".$id_comments."<br> commentaire :".$comments."<br> id_signalements : ".$id_signalements."<br> valIdSignal : ".$valIdSignal."<br> id_photos : ".$id_photos."<br> send status : ".$send."<br> date :".$date_s;
+// echo exec('whoami');
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+<body>
+
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Merci pour votre contribution</h2>
+        <h4 class="card-text">Les données ont bien été transmises.</h4>
+        <a href="../filtre.html"><button type="submit" class="btn btn-success">OK</button></a>
+      </div>
+    </div>
+  </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

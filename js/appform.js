@@ -1,10 +1,15 @@
 function handleFiles(files) {
     for (var i = 0; i < files.length; i++) {
-        console.log(files.length)
         var file = files[i];
         var imageType = /^image\//;
 
+        if (file.size > 1000000) {
+            removePhoto();
+            $("#erreurTaille").addClass("alert alert-danger mx-auto mt-3").text("Fichier trop volumineux. Veuillez réduire la résolution de votre photo.");
+            continue;
+        }
         if (!imageType.test(file.type)) {
+            $("#erreurTaille").addClass("alert alert-danger mx-auto mt-3").text("Ce fichier n'est pas une image");
             continue;
         }
         var img = document.createElement("img");
@@ -15,10 +20,12 @@ function handleFiles(files) {
         var reader = new FileReader();
         reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
         reader.readAsDataURL(file);
-
+        $("#erreurTaille").empty();
+        $("#erreurTaille").removeClass("alert alert-danger mx-auto mt-3");
         $('#cadrePhoto').children().hide();
         $('#supprimer').html("<label class='suppButton'><i class='fas fa-times-circle fa-3x'></i><input type='button' onchange='removePhoto()'>");
         $("#supprimer").show();
+
 
     }
 }
@@ -31,6 +38,7 @@ function removePhoto() {
     $("#supprimer").children().hide();
     $('#cadrePhoto').children().show();
 }
+
 
 $(document).ready(function(){
 //Récupération de la catégorie depuis le sessionstorage
