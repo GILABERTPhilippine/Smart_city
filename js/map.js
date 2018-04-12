@@ -1,5 +1,5 @@
 $(document).ready(function () {
-var map;
+var map, lat, lon;
 
 function init() {
     map = new L.Map('map');
@@ -19,10 +19,29 @@ getLocationLeaflet();
 
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
-    var location = e.latlng
+    console.log(radius);
+
+    var location = e.latlng;
+    console.log(location);
+
+    //Récupération latitude utilisateur
+    var lat = e.latlng.lat;
+    console.log("latitude", lat);
+
+    //Récupération longitude utilisateur
+    var lon = e.latlng.lng;
+    console.log("longitude",lon);
+
+    //Stockage des valeurs dans le sessionStorage
+    sessionStorage.setItem("lat", lat);
+    sessionStorage.setItem("lon", lon);
+
     L.marker(location).addTo(map)
     L.circle(location, radius).addTo(map);
 }
+
+console.log("latitude hors function:",lat);
+console.log("longitude hors function:",lon);
 
 function onLocationError(e) {
     alert(e.message);
@@ -37,15 +56,6 @@ function getLocationLeaflet() {
         maxZoom: 16
     });
 }
-
-//######A Modifier#####
-//Valeurs des variables fixées pour test
-var lat = 43.116312;
-var lon = 1.61;
-console.log(lat);
-console.log(lon);
-
-//######A Modifier#####
 
 // Définition des couleurs des icones par catégorie
 
@@ -89,11 +99,6 @@ var markerViolet = L.icon({
     iconUrl: 'markers/map-marker-violet.svg',
     iconSize: [38, 95],
 });
-
-
-//Stockage des valeurs dans le sessionStorage
-sessionStorage.setItem("lat", lat);
-sessionStorage.setItem("lon", lon);
 
 //Récupération des points gps entrés par l'utilisateur depuis le localstorage
 
