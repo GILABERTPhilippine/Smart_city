@@ -12,12 +12,19 @@ $(document).ready(function(){
     // Récupérer la catégorie dans le localstorage
 
     var categorie;
+    var catValue;
 
     $(".cat").on("click", function (){
         categorie = $(this).children().val();
-        // console.log("this : ",$(this).children().val());
+        catValue = $(this).data('catvalue');
+        console.log("this data : ",$(this).data('catvalue'));
+        console.log("this children val: ",$(this).children().val());
         console.log("categorie :",categorie);
+        console.log("catValue :",catValue);
+
         sessionStorage.setItem("categorie",categorie);
+        sessionStorage.setItem("catValue",catValue);
+
         // console.log("sessionStorage : ",sessionStorage);
     });
 

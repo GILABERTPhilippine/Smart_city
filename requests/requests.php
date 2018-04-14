@@ -40,26 +40,18 @@ if(!empty($_FILES['photo']))
           echo 'Upload effectué avec succès !';
     //Sinon (la fonction renvoie FALSE).
      }else{ 
-          echo 'Echec de l\'upload !';
+        //   echo 'Echec de l\'upload !';
      }
 }
        
 //Stockage le chemin de stockage de la photo
 $photo = $dossier.$fichier;
 
-//########Partie à Modifier########
+//Récupérer les données lat, lon et catégorie
 
-
-//Récupérer les données utilisateur suivantes:
-$lati = 43.1147530;//Fixé pour test
-$longi = 1.6079530;//Fixé pour test
-$id_cat = 1;//Fixé pour test
-
-// $lati = $_POST[''];//loc utilisateur
-// $longi = $_POST[''];//loc utilisateur
-// $id_cat = $_POST[''];//catégorie cliquée par l'utiliateur
-
-//########Partie à Modifier########
+$lati = $_POST['postLat'];//loc utilisateur
+$longi = $_POST['postLon'];//loc utilisateur
+$id_cat = $_POST['postCat'];//catégorie cliquée par l'utiliateur
 
 // Création des variables de la requête d'insertion d'un "nouvel utilisateur" si les champs sont remplis
 if(!empty($nom)){

@@ -43,17 +43,26 @@ function removePhoto() {
 $(document).ready(function(){
 //Récupération de la catégorie depuis le sessionstorage
 
-var cat = sessionStorage.getItem("categorie");
-console.log(cat);
-$("#title").text(cat);
+//Valeur catégorie à envoyer en base
+var cat = sessionStorage.getItem("catValue");
+console.log("catValue",cat);
+
+//Valeur catégorie à afficher en titre de page
+var categorie = sessionStorage.getItem("categorie");
+console.log("categorie",categorie);
+$("#title").text(categorie);
 
 //Récupération de la latitude depuis le sessionstorage
 var lat = sessionStorage.getItem("lat");
-console.log(lat);
+console.log("lat",lat);
 
 //Récupération de la longitude depuis le sessionstorage
 var lon = sessionStorage.getItem("lon");
-console.log(lon);
+console.log("lon",lon);
+
+$("#latitude").val(lat);
+$("#longitude").val(lon);
+$("#categorie").val(cat);
 
 //Obtenir le nombre d'enregistrements / la taille d'un objet
 Object.size = function(obj) {
@@ -69,9 +78,15 @@ Object.size = function(obj) {
 //Vérification de la présence de l'objet userMarkers dans le locastorage 
 console.log(localStorage.getItem("userMarkers")==null);
 $("#envoi").on('click', function(){
+    console.log("lat envoyée",lat);
+    console.log("lon envoyée",lon);
+    console.log("cat envoyée",cat);
+
+//Stockage du point gps dans le localstorage
+
 if (localStorage.getItem("userMarkers")==null){
     // Initialiser l'objet dans le localstorage
-    var userMarkers = {"obj1":{"lat":lat,"lon":lon,"cat":cat}};
+    var userMarkers = {"obj1":{"lat":lat,"lon":lon,"cat":categorie}};
     localStorage.setItem("userMarkers",JSON.stringify(userMarkers));
     getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
     console.log("getUserMarkers if : ",getUserMarkers);
@@ -91,7 +106,7 @@ if (localStorage.getItem("userMarkers")==null){
     var objet = 'obj'+objetNumber;
     console.log("objet:",objet);
     //Création de la nouvelle ligne (valeur associée à la clé)
-    newEntry = {"lat" :lat,"lon":lon,"cat" :cat};
+    newEntry = {"lat" :lat,"lon":lon,"cat" :categorie};
     console.log(newEntry);
     //Ajout de la ligne (valeur) dans la dernière clé de l'objet userMarkers
     getUserMarkers[objet]= newEntry;
