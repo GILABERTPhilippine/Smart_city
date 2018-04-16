@@ -1,17 +1,28 @@
 function handleFiles(files) {
+
+
+
     for (var i = 0; i < files.length; i++) {
         var file = files[i];
         var imageType = /^image\//;
 
-        if (file.size > 1000000) {
+        // Routine de verification de la taille du fichier
+
+        if (file.size > 20000000) {
             removePhoto();
             $("#erreurTaille").addClass("alert alert-danger mx-auto mt-3").text("Fichier trop volumineux. Veuillez réduire la résolution de votre photo.");
             continue;
+
+            // Routine de verification du type de fichier
+
         }
         if (!imageType.test(file.type)) {
             $("#erreurTaille").addClass("alert alert-danger mx-auto mt-3").text("Ce fichier n'est pas une image");
             continue;
         }
+
+        // Création de l'élément qui contiendra la miniature
+
         var img = document.createElement("img");
         img.classList.add("miniature");
         img.file = file;
@@ -40,83 +51,84 @@ function removePhoto() {
 }
 
 
-$(document).ready(function(){
-//Récupération de la catégorie depuis le sessionstorage
+$(document).ready(function() {
+    //Récupération de la catégorie depuis le sessionstorage
 
-//Valeur catégorie à envoyer en base
-var cat = sessionStorage.getItem("catValue");
-console.log("catValue",cat);
+    //Valeur catégorie à envoyer en base
+    var cat = sessionStorage.getItem("catValue");
+    console.log("catValue", cat);
 
-//Valeur catégorie à afficher en titre de page
-var categorie = sessionStorage.getItem("categorie");
-console.log("categorie",categorie);
-$("#title").text(categorie);
+    //Valeur catégorie à afficher en titre de page
+    var categorie = sessionStorage.getItem("categorie");
+    console.log("categorie", categorie);
+    $("#title").text(categorie);
 
-//Récupération de la latitude depuis le sessionstorage
-var lat = sessionStorage.getItem("lat");
-console.log("lat",lat);
+    //Récupération de la latitude depuis le sessionstorage
+    var lat = sessionStorage.getItem("lat");
+    console.log("lat", lat);
 
-//Récupération de la longitude depuis le sessionstorage
-var lon = sessionStorage.getItem("lon");
-console.log("lon",lon);
+    //Récupération de la longitude depuis le sessionstorage
+    var lon = sessionStorage.getItem("lon");
+    console.log("lon", lon);
 
-$("#latitude").val(lat);
-$("#longitude").val(lon);
-$("#categorie").val(cat);
+    $("#latitude").val(lat);
+    $("#longitude").val(lon);
+    $("#categorie").val(cat);
 
-//Obtenir le nombre d'enregistrements / la taille d'un objet
-Object.size = function(obj) {
-    var size = 0, key;
-    for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
-    }
-    return size;
-};
+    //Obtenir le nombre d'enregistrements / la taille d'un objet
+    Object.size = function(obj) {
+        var size = 0,
+            key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) size++;
+        }
+        return size;
+    };
 
-//Obtenir les nouvelles valeurs dans le tableau (objet)
+    //Obtenir les nouvelles valeurs dans le tableau (objet)
 
-console.log(localStorage.getItem("userMarkers")==null);
-$("#envoi").on('click', function(){
-    console.log("lat envoyée",lat);
-    console.log("lon envoyée",lon);
-    console.log("cat envoyée",cat);
+    console.log(localStorage.getItem("userMarkers") == null);
+    $("#envoi").on('click', function() {
+        console.log("lat envoyée", lat);
+        console.log("lon envoyée", lon);
+        console.log("cat envoyée", cat);
 
-//Vérification de la présence de l'objet userMarkers dans le locastorage 
+        //Vérification de la présence de l'objet userMarkers dans le locastorage 
 
-//Stockage du point gps dans le localstorage
+        //Stockage du point gps dans le localstorage
 
-if (localStorage.getItem("userMarkers")==null){
-    // Initialiser l'objet dans le localstorage
-    var userMarkers = {"obj1":{"lat":lat,"lon":lon,"cat":categorie}};
-    localStorage.setItem("userMarkers",JSON.stringify(userMarkers));
-    getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
-    console.log("getUserMarkers if : ",getUserMarkers);
-}else{
-    //Récupération de l'objet userMarkers
-    getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
-    console.log("getUserMarkers else : ",getUserMarkers );
+        if (localStorage.getItem("userMarkers") == null) {
+            // Initialiser l'objet dans le localstorage
+            var userMarkers = { "obj1": { "lat": lat, "lon": lon, "cat": categorie } };
+            localStorage.setItem("userMarkers", JSON.stringify(userMarkers));
+            getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
+            console.log("getUserMarkers if : ", getUserMarkers);
+        } else {
+            //Récupération de l'objet userMarkers
+            getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
+            console.log("getUserMarkers else : ", getUserMarkers);
 
-    //Nombre d'enregistrements dans l'objet
-    var objSize = Object.size(getUserMarkers);
-    console.log("size : ",Object.size(getUserMarkers));
+            //Nombre d'enregistrements dans l'objet
+            var objSize = Object.size(getUserMarkers);
+            console.log("size : ", Object.size(getUserMarkers));
 
-    //Ajouter une nouvelle ligne au tableau:
-    //Nombre de lignes
-    var objetNumber = objSize+1;
-    //Concaténation du nom de la clé
-    var objet = 'obj'+objetNumber;
-    console.log("objet:",objet);
-    //Création de la nouvelle ligne (valeur associée à la clé)
-    newEntry = {"lat" :lat,"lon":lon,"cat" :categorie};
-    console.log(newEntry);
-    //Ajout de la ligne (valeur) dans la dernière clé de l'objet userMarkers
-    getUserMarkers[objet]= newEntry;
-    //Stocker le nouveau tableau dans l'objet userMarkers du localStorage
-    setUserMarkers = localStorage.setItem("userMarkers", JSON.stringify(getUserMarkers));
-}
-})
+            //Ajouter une nouvelle ligne au tableau:
+            //Nombre de lignes
+            var objetNumber = objSize + 1;
+            //Concaténation du nom de la clé
+            var objet = 'obj' + objetNumber;
+            console.log("objet:", objet);
+            //Création de la nouvelle ligne (valeur associée à la clé)
+            newEntry = { "lat": lat, "lon": lon, "cat": categorie };
+            console.log(newEntry);
+            //Ajout de la ligne (valeur) dans la dernière clé de l'objet userMarkers
+            getUserMarkers[objet] = newEntry;
+            //Stocker le nouveau tableau dans l'objet userMarkers du localStorage
+            setUserMarkers = localStorage.setItem("userMarkers", JSON.stringify(getUserMarkers));
+        }
+    })
 
-// console.log("getUserMarkers",getUserMarkers);
+    // console.log("getUserMarkers",getUserMarkers);
 
 
 });

@@ -215,10 +215,10 @@ if(!empty($photo) && !empty($send==true)){
 
 <div class="row">
   <div class="col-12">
-    <div class="card">
+    <div class="card text-center">
       <div class="card-body">
-        <h2 class="card-title">Merci pour votre contribution</h2>
-        <h4 class="card-text">Les données ont bien été transmises.</h4>
+        <h4 class="card-title">Merci pour votre contribution</h4>
+        <h5 class="card-text">Les données ont bien été transmises.</h5>
         <a href="../filtre.html"><button type="submit" class="btn btn-success">OK</button></a>
       </div>
     </div>
