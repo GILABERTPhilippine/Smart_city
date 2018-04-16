@@ -30,22 +30,22 @@ $comments = $_POST['comments'];
 if(!empty($_FILES['photo']))
 { 
     //Création du chemin absolu du dossier d'upload
-    //RQ: aouter un "/" au debut du chemin pour indiquer la racine et un "/" à la fin pour indiquer que le dossier d'upload est bien un dossier (sinon le nom de dossier et interprété comme un prefixe de type texte à ajouter au nom du fichier récupéré).
+    //RQ: aouter un "/" au debut du chemin pour indiquer la racine et un "/" à la fin pour indiquer que le dossier d'upload est bien un dossier (sinon le nom de dossier et interprété comme un prefixe de type texte à ajouter au nom du fichier récupéré). IMPORTANT : Ajouter les droits en écriture dans le dossier 'uploads' sinon aucune image ne sera téléchargée...
      $dossier = '/var/www/html/Smart_city/uploads/';
      //Création du nom de fichier à copier
      $fichier = basename($_FILES['photo']['name']);
      //Déplacement du fichier temporaire dans le dossier upload avec le nom de fichier correspondant
-     //Si la fonction renvoie TRUE, c'est l'upload s'est déroulé correctement
-     if(move_uploaded_file($_FILES['photo']['tmp_name'], $dossier . $fichier)){
-          echo 'Upload effectué avec succès !';
+     //Si la fonction renvoie TRUE, c'est que l'upload s'est déroulé correctement
+     if($upload = move_uploaded_file($_FILES['photo']['tmp_name'], $dossier.$fichier)){
+        //   echo 'Upload effectué avec succès !';
     //Sinon (la fonction renvoie FALSE).
      }else{ 
-        //   echo 'Echec de l\'upload !';
+        //   echo "Echec de l\'upload ! <br> "
      }
 }
        
 //Stockage le chemin de stockage de la photo
-$photo = $dossier.$fichier;
+$photo = "uploads/".$fichier;
 
 //Récupérer les données lat, lon et catégorie
 

@@ -75,12 +75,13 @@ Object.size = function(obj) {
 
 //Obtenir les nouvelles valeurs dans le tableau (objet)
 
-//Vérification de la présence de l'objet userMarkers dans le locastorage 
 console.log(localStorage.getItem("userMarkers")==null);
 $("#envoi").on('click', function(){
     console.log("lat envoyée",lat);
     console.log("lon envoyée",lon);
     console.log("cat envoyée",cat);
+
+//Vérification de la présence de l'objet userMarkers dans le locastorage 
 
 //Stockage du point gps dans le localstorage
 

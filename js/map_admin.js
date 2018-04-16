@@ -79,19 +79,19 @@ $(document).ready(function () {
 
         //A modifier : Condition pour effacer les marqueurs dejà présents sur la carte 
 
-        // if (markers){
-        //     map.removeLayer(markers);
-        // }
+        if (markers){
+            map.removeLayer(markers);
+        }
 
-        var categorie = $(this).val();
-        $("#title").text(categorie);
-        console.log(categorie);
+        var categorieTxt = $(this).val();
+        $("#title").text(categorieTxt);
+        console.log(categorieTxt);
         var categorie = $(this).data('categorie');
         console.log(categorie);
 
         $.ajax({
             url: 'map_admin.php',
-            method: 'GET',
+            method: 'POST',
             dataType: 'json',
             //getCat est récupéré dans le $_POST php et categorie correspond à la variable js
             data: {
@@ -130,10 +130,18 @@ $(document).ready(function () {
                         console.log("valeurs", values);
                         console.log("latitude", values.latitude);
                         console.log("longitude", values.longitude);
+                        console.log("commentaire", values.commentaire);
+                        console.log("image", values.image);
+
+
+
 
                         //Récupération des valeurs correspondant aux clés, lat,lon et cat
                         var latitude = values.latitude;
                         var longitude = values.longitude;
+                        var commentaire = values.commentaire;
+                        var image = values.image;
+
                         
 
 
@@ -146,7 +154,7 @@ $(document).ready(function () {
                                 //Création d'un point de relevé et affichage sur la carte avec la couleur correspondante (ex : markerBleuF)
                                 markers = L.marker([latitude, longitude], {
                                     icon: markerBleuF
-                                }).addTo(map);
+                                }).addTo(map).bindPopup(  "<a target='_blank' href='"+image+"'/>Afficher la photo<a><br>" + commentaire);
                                 break;
 
                                 //Propreté de la ville
@@ -154,7 +162,7 @@ $(document).ready(function () {
                             case 2:
                                 markers = L.marker([latitude, longitude], {
                                     icon: markerBleu
-                                }).addTo(map);
+                                }).addTo(map).bindPopup(  "<a target='_blank' href='"+image+"'/>Afficher la photo<a><br>" + commentaire);
                                 break;
                                 
                                 //Voirie / chaussée
@@ -162,7 +170,7 @@ $(document).ready(function () {
                             case 3:
                                 markers = L.marker([latitude, longitude], {
                                     icon: markerRouge
-                                }).addTo(map);
+                                }).addTo(map).bindPopup(  "<a target='_blank' href='"+image+"'/>Afficher la photo<a><br>" + commentaire);
                                 break;
                                 
                                 //Eclairage public
@@ -170,7 +178,7 @@ $(document).ready(function () {
                             case 4:
                                 markers = L.marker([latitude, longitude], {
                                     icon: markerOrange
-                                }).addTo(map);
+                                }).addTo(map).bindPopup( "<a target='_blank' href='"+image+"'/>Afficher la photo<a><br>" + commentaire);
                                 break;
 
                                 //Encombrants
@@ -178,7 +186,7 @@ $(document).ready(function () {
                             case 5:
                                 markers = L.marker([latitude, longitude], {
                                     icon: markerViolet
-                                }).addTo(map);
+                                }).addTo(map).bindPopup( "<a target='_blank' href='"+image+"'/>Afficher la photo<a><br>" + commentaire);
                                 break;
 
                                 //Autres
@@ -186,7 +194,7 @@ $(document).ready(function () {
                             case 6:
                                 markers = L.marker([latitude, longitude], {
                                     icon: markerVert
-                                }).addTo(map);
+                                }).addTo(map).bindPopup(  "<a target='_blank' href='"+image+"'/>Afficher la photo<a><br>" + commentaire);
                                 break;
 
                                 //Catégorie non présente en base
@@ -194,7 +202,7 @@ $(document).ready(function () {
                             case 7:
                                 markers = L.marker([latitude, longitude], {
                                     icon: markerGris
-                                }).addTo(map);
+                                }).addTo(map).bindPopup(  "<a target='_blank' href='"+image+"'/>Afficher la photo<a><br>" + commentaire);
                                 break;
 
                                 //Catégorie non présente en base
@@ -203,7 +211,7 @@ $(document).ready(function () {
                             case 8:
                                 markers = L.marker([latitude, longitude], {
                                     icon: markerNoir
-                                }).addTo(map);
+                                }).addTo(map).bindPopup(  "<a target='_blank' href='"+image+"'/>Afficher la photo<a><br>" + commentaire);
                                 break;
 
                             default:
