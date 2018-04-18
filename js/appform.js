@@ -1,7 +1,5 @@
 function handleFiles(files) {
 
-
-
     for (var i = 0; i < files.length; i++) {
         var file = files[i];
         var imageType = /^image\//;
@@ -16,6 +14,7 @@ function handleFiles(files) {
             // Routine de verification du type de fichier
 
         }
+
         if (!imageType.test(file.type)) {
             $("#erreurTaille").addClass("alert alert-danger mx-auto mt-3").text("Ce fichier n'est pas une image");
             continue;
@@ -50,6 +49,7 @@ function removePhoto() {
     $('#cadrePhoto').children().show();
 }
 
+//Si $(document).ready en début de script, la fonction handleFiles() ne fonctionne plus
 
 $(document).ready(function() {
     //Récupération de la catégorie depuis le sessionstorage
@@ -71,6 +71,8 @@ $(document).ready(function() {
     var lon = sessionStorage.getItem("lon");
     console.log("lon", lon);
 
+    //Affichage (masqué) des valeurs à envoyer en base dans un input de type hidden
+
     $("#latitude").val(lat);
     $("#longitude").val(lon);
     $("#categorie").val(cat);
@@ -85,9 +87,10 @@ $(document).ready(function() {
         return size;
     };
 
-    //Obtenir les nouvelles valeurs dans le tableau (objet)
+    //Stocker les valeurs de cat, lat, lon dans un JSON
 
     console.log(localStorage.getItem("userMarkers") == null);
+
     $("#envoi").on('click', function() {
         console.log("lat envoyée", lat);
         console.log("lon envoyée", lon);
@@ -95,20 +98,21 @@ $(document).ready(function() {
 
         //Vérification de la présence de l'objet userMarkers dans le locastorage 
 
-        //Stockage du point gps dans le localstorage
-
         if (localStorage.getItem("userMarkers") == null) {
-            // Initialiser l'objet dans le localstorage
+            // Initialiser la première ligne de l'objet dans une variable
             var userMarkers = { "obj1": { "lat": lat, "lon": lon, "cat": categorie } };
+            //Stockage de l'objet dans le localstorage
             localStorage.setItem("userMarkers", JSON.stringify(userMarkers));
+            //Vérification de la présence de l'objet (affichage console)
             getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
             console.log("getUserMarkers if : ", getUserMarkers);
         } else {
+            //L'objet existe déjà dans le localstorage
             //Récupération de l'objet userMarkers
             getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
             console.log("getUserMarkers else : ", getUserMarkers);
 
-            //Nombre d'enregistrements dans l'objet
+            //Calcul du nombre d'enregistrements dans l'objet
             var objSize = Object.size(getUserMarkers);
             console.log("size : ", Object.size(getUserMarkers));
 

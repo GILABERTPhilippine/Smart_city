@@ -68,7 +68,7 @@ Object.size = function (obj) {
     }
 }
 
-    //attribution des groupes de marqueurs aux catégégories correspondantes
+    //Attribution des groupes de marqueurs aux catégégories correspondantes
 
     var degUrb = L.layerGroup();
     var propVille = L.layerGroup();
@@ -79,6 +79,8 @@ Object.size = function (obj) {
     var encombrants = L.layerGroup();
     var autres = L.layerGroup();
     var allCat = L.layerGroup();
+
+    //Atribution d'un label (étiquette) à chaque groupe de marqueur
 
     var baseLayers = {
         "Dégradations urbaines": degUrb,
@@ -92,6 +94,7 @@ Object.size = function (obj) {
         "Toutes les catégories": allCat
     };
 
+    //Ajout du bouton de filtrage ds catégories sur la carte
     L.control.layers(baseLayers).addTo(map);
 
 
@@ -143,8 +146,6 @@ Object.size = function (obj) {
     sessionStorage.setItem("lat", lat);
     sessionStorage.setItem("lon", lon);
 
-    //Récupération des points gps entrés par l'utilisateur depuis le localstorage
-
     //Obtenir le nombre d'enregistrements / la taille d'un objet
     Object.size = function(obj) {
         var size = 0,
@@ -158,12 +159,7 @@ Object.size = function (obj) {
     //Vérification de la présence de l'objet userMarkers dans le locastorage 
     console.log("userMarkers?", localStorage.getItem("userMarkers") == !null);
 
-    //######A Modifier#####
-
-    // if (localStorage.getItem("userMarkers")==!null) {
-
-    //######A Modifier#####
-
+     //Récupération des points gps entrés par l'utilisateur depuis le localstorages
     var getUserMarkers = JSON.parse(localStorage.getItem("userMarkers"));
     console.log("getUserMarkers if :", getUserMarkers);
 
@@ -180,26 +176,15 @@ Object.size = function (obj) {
     //Création et affichage des points de relevés utilisateur
     createMarkers();
 
-    //######A Modifier#####
-
-    // }
-
-    //######A Modifier#####
-
-
     //Itération sur les clés/valeurs de l'objet et contruction des coordonnnées gps
     //Limite le nombre d'itération au nombre de clés/valeurs déjà stockées via objSize
-    function filtrer() {
-        console.log(Helllllo);
-    }
-
 
     function createMarkers() {
 
         for (var i = 0; i <= objSize - 1; i++) {
-            //récupération de la clé à chaque itération
+            //Récupération de la clé à chaque itération
             var key = userMarkersKey[i];
-            //récupération de la valeur à chaque itération
+            //Récupération de la valeur à chaque itération
             var values = userMarkersValue[i];
             console.log("clé", key);
             console.log("valeurs", values);

@@ -31,7 +31,7 @@ if(!empty($_FILES['photo']))
 { 
     //Création du chemin absolu du dossier d'upload
     //RQ: aouter un "/" au debut du chemin pour indiquer la racine et un "/" à la fin pour indiquer que le dossier d'upload est bien un dossier (sinon le nom de dossier et interprété comme un prefixe de type texte à ajouter au nom du fichier récupéré). IMPORTANT : Ajouter les droits en écriture dans le dossier 'uploads' sinon aucune image ne sera téléchargée...
-     $dossier = '/var/www/html/Smart_city/uploads/';
+     $dossier = '/home/k0d3/www/smart_city/uploads/';
      //Création du nom de fichier à copier
      $fichier = basename($_FILES['photo']['name']);
      //Déplacement du fichier temporaire dans le dossier upload avec le nom de fichier correspondant
@@ -135,10 +135,8 @@ if(!empty($photo)){
     $valIdPhotos = "'".$id_photos."'";
 }
 
-
 //Requete d'insertion d'un nouveau signalement
 $insertSignal=$connect->query("INSERT INTO t_signalements (id_signalements, date_s, lati, longi, id_cat, id_statut) VALUES (".$valIdSignal.",'".$date_s."','".$lati."','".$longi."','".$id_cat."','". $id_statut."');") or exit("Erreur sur insertSignal ({$connect->errno}): {$connect->error}");
-
 
 //Vérifier que la requête a bien été envoyée
 if ($insertSignal){
@@ -177,22 +175,6 @@ if(!empty($photo) && !empty($send==true)){
 
     $updateSignalPhoto=$connect->query("UPDATE t_signalements SET id_photos = ".$valIdPhotos." WHERE id_signalements =".$valIdSignal.";") or exit("Erreur sur updateSignalPhoto ({$connect->errno}): {$connect->error}");
     }
-
-// Redirection vers la carte
-// echo "<p>Juju</p>";
-// header('Location: ../filtre.html');
-
-
-//########Partie à Modifier########
-
-//Fonction query à créer
-
-// function sql($query){
-//     $insert=$connect->query($query) or exit("Error code ({$connect->errno}): {$connect->error}");
-// }
-
-
-//########Partie à Modifier########
 
 //########Debug affichage des variables pour contrôle résultats########
 // echo "<br>id_user :".$id_user."<br> id_roles : ".$id_roles."<br> nom : ".$nom."<br> prenom : ".$prenom."<br> mail :".$email."<br> id_comments :".$id_comments."<br> commentaire :".$comments."<br> id_signalements : ".$id_signalements."<br> valIdSignal : ".$valIdSignal."<br> id_photos : ".$id_photos."<br> send status : ".$send."<br> date :".$date_s;
