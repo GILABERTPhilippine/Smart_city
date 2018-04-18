@@ -1,10 +1,10 @@
-###Smart_city
+### Smart_city
 
-##Adresse temporaire de test du projet
+## Adresse temporaire de test du projet
 
 https://k0d3.alwaysdata.net/smart_city/
 
-##Arborescence du projet :
+## Arborescence du projet :
 
 /db : contient le script de connexion à la base de données  
 **Important : modifier les informations de connexion correspondantes lors du déploiement serveur**
