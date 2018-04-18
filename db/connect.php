@@ -1,6 +1,6 @@
 <?php
 
-$connect = new mysqli("localhost", "root", "root", "Smart_city");
+$connect = new mysqli("localhost", "root", "root", "smart_city");
 if ($connect->connect_errno) {
     echo "Echec lors de la connexion à MySQL : (" . $connect->connect_errno . ") " . $connect->connect_error;
 } else {

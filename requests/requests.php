@@ -31,7 +31,7 @@ if(!empty($_FILES['photo']))
 { 
     //Création du chemin absolu du dossier d'upload
     //RQ: aouter un "/" au debut du chemin pour indiquer la racine et un "/" à la fin pour indiquer que le dossier d'upload est bien un dossier (sinon le nom de dossier et interprété comme un prefixe de type texte à ajouter au nom du fichier récupéré). IMPORTANT : Ajouter les droits en écriture dans le dossier 'uploads' sinon aucune image ne sera téléchargée...
-     $dossier = '/home/k0d3/www/smart_city/uploads/';
+     $dossier = '/var/www/html/Smart_city/uploads/';
      //Création du nom de fichier à copier
      $fichier = basename($_FILES['photo']['name']);
      //Déplacement du fichier temporaire dans le dossier upload avec le nom de fichier correspondant
@@ -40,7 +40,7 @@ if(!empty($_FILES['photo']))
         //   echo 'Upload effectué avec succès !';
     //Sinon (la fonction renvoie FALSE).
      }else{ 
-        //   echo "Echec de l\'upload ! <br> "
+        //   echo "Echec de l\'upload ! <br> ";
      }
 }
        
