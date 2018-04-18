@@ -6,7 +6,7 @@ https://k0d3.alwaysdata.net/smart_city/
 
 #Arborescence du projet :
 
-/db : contient le script de connexion à la base de données
+/db : contient le script de connexion à la base de données  
 *Important : modifier les informations de connexion correspondantes lors du déploiement serveur*
 
 /doc : Cahier des charges, Maquette, diagramme d'activité, dictionnaire de requêtes SQL , script de création de la base de données
@@ -18,8 +18,10 @@ https://k0d3.alwaysdata.net/smart_city/
  - appform : script du formulaire d'import des données
  - cat : script de récupération des catégories de notifications
  - leaflet : script propre à l'API leaflet
- - map_admin : script de l'interface administrateur, *Important : Modifier la clé API leaflet*
- - map: script d'affichage de la carte de l'interface utilisateur, *Important : Modifier la clé API leaflet*
+ - map_admin : script de l'interface administrateur  
+ *Important : Modifier la clé API leaflet*
+ - map: script d'affichage de la carte de l'interface utilisateur  
+ *Important : Modifier la clé API leaflet*
  
 /markers : fichiers svg propres à chaque catégorie de marqueurs sur la carte
 
@@ -38,7 +40,7 @@ formulaire.html : formulaire d'import des données + photo
 
 index.html : page d'accueil du site
 
-map_admin.html : page de l'interface utilisateur
+map_admin.html : page de l'interface utilisateur  
 *Important : Entrer directement le nom de la page pour accéder à l'interface administrateur*
 
 map_admin.php : script php de récupération des points d'intérêt de tous les utilisateurs par catégorie
